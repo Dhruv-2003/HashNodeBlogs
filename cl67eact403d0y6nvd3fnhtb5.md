@@ -1,35 +1,35 @@
 ## Everything about NFT storage with a Demo App tutorial
 
-Do you want to prepare a Compatible metadata according to standards and Upload it IPFS , all in a Single Click ??
+Do you want to prepare a Compatible metadata according to the standards and Upload it IPFS, all in a Single Click?
 
-Then what are you waiting  for, Let's dive into the Blog !!.
+Then what are you waiting for, Let's dive straight into the Blog!!!.
 
-In this Blog We will discuss about [NFT.storage](https://nft.storage) , an awesome product by Protocol Labs for NFTs . We will also create a Demo Next.js App with NFT storage via JS client.
+In this Blog We will learn about [NFT.storage](https://nft.storage) ,An awesome product by Protocol Labs for NFTs .We will also create a Demo Next.js App with NFT storage via JS client.
 🚀🚀
 
 # What is NFT Storage ?
 - NFT.Storage is a storage service that lets you upload off-chain NFT data(like metadata, images, 
-and other assets) for free, with the goal to store all NFT data as a public good .
+and other assets) for free, with the goal to store all NFT data as a public good.
 - The data is stored perpetually in the Filecoin decentralized storage network and made available over IPFS via its unique content ID
 - NFT.Storage is especially useful for individual creators who are minting NFTs, or NFT tooling developers
 
 # Why NFT Storage ?
-- It is super easy to use and integrate in your dApp using the Available APIs , SDKs .
-- We get the NFT Compatible Metadata in a single click , eliminating hassle of preparing it .
+- It is super easy to use and integrate in your dApp using the Available APIs and SDKs.
+- We can get the NFT Compatible Metadata in a single click, eliminating hassle of preparing it .
 - Filecoin provides long-term storage for the data ensuring that even if NFT.Storage is attacked or taken down the NFT data persists!
 - NFT data stored can be accessed and retrieved from the decentralized IPFS network from any peer that has the content as we get a CID for the Data stored.
 
 # How to use NFT Storage ?
 
-There are multiple methods of storing Metadata using NFT.storage , so you can choose according to your purpose and we will go through each one in brief.
+There are multiple methods of storing Metadata using NFT.storage , So you can choose according to your purpose and we will go through each one briefly.
 
 ## Via NFT.storage Website 
 - Login on [NFT.storage](https://nft.storage/login/) 
 - Go to [new-files](https://nft.storage/new-file/) section 
 - Select the Already prepared NFT metadata file to upload
 
-## With  NFTUp
-- We will don't go deep into that now, you can Refer this blog for using [NFTUp](https://nft.storage/docs/how-to/nftup/) and setup it according to the process.
+## With NFTUp
+- We won't go deep into that now, you can refer to this blog for using [NFTUp](https://nft.storage/docs/how-to/nftup/) and set it up according accordingly.
 
 ## With JS Client and Node.js
 
@@ -56,7 +56,7 @@ There are multiple methods of storing Metadata using NFT.storage , so you can ch
   }
 }
 ```
-This contain 2 packages namely nft.storage and mime 
+This contains 2 packages namely nft.storage and mime 
 
 -  Run `npm install` in the terminal of same directory
 - Create a file named `upload.mjs` and this code to your file
@@ -140,17 +140,17 @@ main().catch((err) => {
   process.exit(1);
 });
 ```
-This script first take the input of name , description and image from the node terminal which we will provide while running the script and converts that into uploadable version and then Prepares the metadata and upload it to the IPFS 
-- Create a folder named `files` & Store the image file in the folder 
+This script first takes the name input, description and image from the node terminal which we will provide while running the script and converts it into uploadable version and then prepares the metadata and uploads it to the IPFS.
+- Create a folder named `files` & Store the image file inside the folder. 
 - Run the script with following command `node upload.mjs files/<Image Name> '<Name>' '<Description>' `
 
 CID and token URI get's logged in the console which can be stored for creating NFTs , provide the `url` part for the metadata while setting the URI for the NFT. 
 
-Voila ! 🎊🥳 You have Successfully Created NFT Metadata using Script , run JS script any time you want to create metadata .
+Voila!!! 🎊🥳 You have Successfully Created NFT Metadata using Script, now you can run JS script any time you want to create metadata .
 
 ## Next.js App with NFT.storage SDK Package
 
-I have already prepared a Dapp for you all to try it out , so go ahead with live link and try .
+I have already prepared a Dapp for you all to try out,So go ahead with the link below and see if for yourself.
 
 [Github Repo](https://github.com/Dhruv-2003/NFTStorageDemoApp)
 
@@ -160,7 +160,7 @@ I have already prepared a Dapp for you all to try it out , so go ahead with live
 ![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1659098267149/LP1ihVCbb.png align="left")
 
 
-We are going to create a Demo app for creating metadata in the App with just a Click and you can integrate the same in your app , so Let's Go
+We are going to create a Demo app for creating metadata in the App with just a Click and you can integrate the same into your app ,So Let's start off!
 
 - Get an API token From [here](https://nft.storage/manage/)
 - Create a Next / React App according to your preference
@@ -192,7 +192,7 @@ export const StoreMetadata = async (image, Name, Description) => {
   return metadata;
 };
 ```
-This is the main component that prepares the metadata from the inputs we give and then uploads it to IPFS via JS client created.
+This is the main component that prepares the metadata from the inputs we provided and then uploads it to IPFS via JS client created.
 
 You can customize the metadata according to the standards for the Token type 
 Example Metadata file which you can edit which data you want to add or select.
@@ -270,23 +270,17 @@ const upload = async () => {
     }
   };
 ```
-- This function can be called with a button  , when the inputs have already been set.
-- Metadata return object is of format
+- This function can be called with a button, When the inputs have already been set.
+- Metadata return object is of the following format ⬇️
 ```
 Token {
   ipnft: 'bafyreifrkkhbwkf3fibwhbzcmpqnmh3b4t5t4ig7qdtymkdoatcycwe6n4',
   url: 'ipfs://bafyreifrkkhbwkf3fibwhbzcmpqnmh3b4t5t4ig7qdtymkdoatcycwe6n4/metadata.json'
 }
 ```
-- CID will be logged along with the url to Checkout the uploaded data . You can use the required data accordingly to mint NFT ,etc.
+- CID will be logged along with the url to Checkout the uploaded data. You can use the required data accordingly to mint the NFT.
 
 **Congratulations** 🥳🥳 , you have created a dApp that creates & uploads metadata to IPFS via *NFT.storage*.  
 
 All the reference are from *NFT.storage* 📃 docs and my own *Research*.
-For any other *reference* Visit: [https://nft.storage/docs](https://nft.storage/docs)
-
-**Thank you** for reading the Blog , I hope you were able to learn more about from a Dev point of view. If you really liked the content , do Share it with your friends and drop a comment in case you need any help 👍
-
-**Follow** me on Twitter [@0xdhruva](https://twitter.com/0xdhruva) for more .
-
-Meet you Next time soon with a New blog , Stay tuned !! 👋👋
+For any other *reference* Visit: [https://nft.storage/docs](https://nft.storage/docs).
