@@ -1,26 +1,26 @@
 ## All About Web3 Storage with Demo App tutorial
 
-In this blog , We will learn more about development with Web3.storage and by the time you complete the blog , you will surely learn something more about Web3.storage and IPFS ,that will level up your Web3 journey.
+In this blog, We will learn more about development with Web3.storage and by the time you complete the blog, You will surely learn more about Web3.storage and IPFS which will level up your Web3 journey.
 
 So let's Start 🚀🚀
 
 ## What is Web3.storage ?
-- The easiest way to store data on the decentralized web via JS Client .(IPFS)
-- Store your data using simple API. It’s fast, open, and it’s free.
-- Retrieve the data with ease from IPFS .
+- The easiest way to store data on the decentralized web via JS Client(IPFS)
+- Store your data using simple API which is fast, open and free.
+- Retrieve data with ease from IPFS.
 
 ## Why Web3.Storage ?
-- Use simple client library or the HTTP API directly in you dApp for integration
-- All data stored is accessible on the public IPFS network via CID and can be accesses any time 
-- Data is stored on File Coin Network , which is free Upto 1 TB+
+- Use simple client library or the HTTP API directly in you dApp for integration.
+- All the data stored is accessible on the public IPFS network via CID and can be accessed any time.
+- Data is stored on the Filecoin Network, Which is free Upto 1 TB+
 
 ## How to use Web3.Storage ?
 
 ### Via Account section 
 - Head Over to Account on [Web3.Storage](http://web3.storage)
-- There you will get an option to upload files and get a CID .
-- Simple way to store all the Data directly to IPFS 
-- Data can be retrieved any time from files section
+- There you will get an option to upload files and get a CID.
+- Simple way to store all the Data directly to IPFS.
+- Data can be retrieved any time from the files section.
 
 
 ### With Script and Node.js
@@ -86,7 +86,7 @@ This code take the files as input , initializes Web3 Client and uploads all the 
   "license": "(Apache-2.0 AND MIT)"
 } ```
 
-- Get API Token from [here](https://web3.storage/tokens/)
+- Get an API Token from [here](https://web3.storage/tokens/)
 - Run ``npm install``  to install the packages
 - Run Script 
 --> Upload  whole folder
@@ -94,12 +94,12 @@ This code take the files as input , initializes Web3 Client and uploads all the 
 --> Upload specific file
 `node put-files.js --token=<YOUR_TOKEN> ./files/fileName1 ./files/fileName2`
 
-And Voila ! You will get the CID in console and You have stored a file Successfully via JS 🔥🔥.
+And Voila! You will get the CID in the console and You have stored a file Successfully via JS 🔥🔥.
 
 ### With Next.js/React.js App
-Now integrate Web3Storage Client in you Next/ React Dapp in just 5 steps .
+Now integrate Web3Storage Client in you Next/React Dapp in just 5 steps.
 
-I have prepared a live Website for you all to try it out.
+I have prepared a live Website for all of you to try out.
 
 [Github Repo](https://github.com/Dhruv-2003/Web3.StorageDemoApp) 
 
@@ -141,17 +141,16 @@ export const StoreContent = async (files) => {
    onChange={(e) => setFiles(e.target.files[0])}
   ></input>
 ```
-- This will accept only 1 file input at a time .
-- Create a function upload which calls StoreContent Component( Do import the component first ).
+- This will accept only 1 file input at a time.
+- Create a function upload which calls the StoreContent Component( Do import the component first ).
 - Button can be created and upload must be called to upload the files and this will return a CID in the console, which can be displayed on the Screen using CID state. 
 
 ![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1659025000995/-Bvdfi7sj.png align="left") 
-Check Console for detailed status of upload .
-This Successfully completes the Dapp for Uploading the files to IPFS via web3.storage Client.
+Check the Console for detailed status of upload.
+This Successfully completes the Dapp for Uploading the files to IPFS via the web3.storage Client.
 
-For any other Reference : https://web3.storage/docs .
+For any other Reference : https://web3.storage/docs.
 
 
-Thank you for reading the blog . Meet you next time with some other blog.
-Do give me a follow on twitter [@0xdhurva](https://twitter.com/0xdhruva) and share this article with your friends . 👋👋
+Thank you for reading the blog. See you next time with some more content.
 
