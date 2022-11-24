@@ -157,7 +157,10 @@ In case of further queries , connect on [Twitter](https://twitter.com/0xdhruva) 
 
 ## Links and References
 
-- https://docs.stacks.co/docs/intro
+To learn more, refer the links below :
+
+- [Stacks official docs](https://docs.stacks.co/docs/intro)
+- [Clarity Book](https://book.clarity-lang.org/title-page.html)
 - https://github.com/Dhruv-2003/StacksTokenContracts
 - https://www.stacks.sahilaujla.com/
 - https://clarity.tools
