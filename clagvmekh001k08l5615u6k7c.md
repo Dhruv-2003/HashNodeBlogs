@@ -28,13 +28,115 @@ A fundamental use of blockchain technology is the representation, store, and tra
 
 A blockchain token is a digital asset that can be verifiably owned by a user of a blockchain. Blockchain tokens are governed by a set of rules that are defined by either the blockchain itself (in the case of native tokens) or by a smart contract on a blockchain.
 
+## Traits 
+
+Before , we start diving deep into each type of tokens , we need to know about **Traits** in clarity .
+
+Traits are a bit like templates for smart contracts. They are a collection of public function definitions that describe names, input types, and output types .The purpose of a trait is to define a public interface to which a contract can conform either implicitly or explicitly. It works similar to an interface in Solidity .
+
+Basically, if there is a trait `my-trait` defined in a contract `my-contract` that is deployed on mainnet, another contract `my-implementation` can point to `my-contract.my-trait` . Traits are integral for dynamic inter-contract calls.
+
+
+### Defining a Trait 
+
+Traits are defined using the define-trait function. It takes a trait name as a parameter followed by a series of function signatures in short form , we just include the function name, input types and output types .
+
+```
+(define-trait my-trait
+    (
+        (function-name-1 (param-types-1) response-type-1)
+        (function-name-2 (param-types-2) response-type-2)
+        ;; And so on...
+    )
+)
+```
+
+### Implementing and Asserting a Trait 
+
+Trait conformance is just a fancy way of saying that a specific smart contract implements the functions defined in the trait. For example , 
+
+```
+;; Trait defined 
+(define-trait multiplier
+    (
+        (multiply (uint uint) (response uint uint))
+    )
+)
+
+;; Trait Implemented
+(define-read-only (multiply (a uint) (b uint))
+    (ok (* a b))
+)
+
+```
+
+ To assert that the contract implements the trait, the `impl-trait` function is used.
+
+```
+impl-trait .contract.trait-name
+
+;; for example
+impl-trait .multiplier-trait.multiplier
+
+```
+
 ## Types of Tokens 
 
 ### Non - Fungible Tokens
 Non-fungible tokens (NFTs) are a type of token that are not interchangeable. NFTs have unique traits (usually in the form of attached metadata) that restrict the abillity to replace them with identical tokens. An NFT is a token that is unique, such as a piece of art, or ownership rights to a real-world asset such as a house.
 
+
+Creating a SIP009-compliant NFT comes down implementing a trait .
+
+```
+(define-trait sip009-nft-trait
+    (
+        ;; Last token ID, limited to uint range
+        (get-last-token-id () (response uint uint))
+
+        ;; URI for metadata associated with the token 
+        (get-token-uri (uint) (response (optional (string-ascii 256)) uint))
+
+        ;; Owner of a given token identifier
+        (get-owner (uint) (response (optional principal) uint))
+
+        ;; Transfer from the sender to a new principal
+        (transfer (uint principal principal) (response bool uint))
+    )
+)
+```
+
 ### Fungible Tokens 
 A fungible token is a token that's mutually interchangable or capable of mutual substitution. In other words, one quantity or part of a fungible token can be replaced by an equal quantity or part of the same fungible token. Fungible tokens are often used to represent real-world fungible assets like currency.
+
+Creating a SIP010-compliant fungible token also comes down implementing a trait.
+
+```
+(define-trait sip010-ft-trait
+  (
+    ;; Transfer from the caller to a new principal
+    (transfer (uint principal principal (optional (buff 34))) (response bool uint))
+
+    ;; the human readable name of the token
+    (get-name () (response (string-ascii 32) uint))
+
+    ;; the ticker symbol, or empty if none
+    (get-symbol () (response (string-ascii 32) uint))
+
+    ;; the number of decimals used, e.g. 6 would mean 1_000_000 represents 1 token
+    (get-decimals () (response uint uint))
+
+    ;; the balance of the passed principal
+    (get-balance (principal) (response uint uint))
+
+    ;; the current total supply (which does not need to be a constant)
+    (get-total-supply () (response uint uint))
+
+    ;; an optional URI that represents metadata of this token
+    (get-token-uri () (response (optional (string-utf8 256)) uint))
+    )
+  )
+```
 
 
 ## Setting up the Dev Environment
@@ -62,7 +164,6 @@ Once Connected  , the window will appear as :
 
 ![Screenshot 2022-11-14 at 11.39.10 AM.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1668406341234/4xX8NRMEM.png align="left")
 
-
 Ok So Now , we are good to go to create both types of token.
 
 ### NOTE
@@ -83,6 +184,8 @@ These are the default function for SIP-010 types of tokens :
 - `get-balance-of` - Balance of token for an Address
 - `get-token-uri` - Token URI associated with the token
 
+
+We can implement the SIP-010 Trait with `impl-trait 'SP3FBR2AGK5H9QBDH3EEN6DF8EK8JY7RX8QJ5SVTE.sip-010-trait-ft-standard.sip-010-trait` , the Trait contract is already deployed on Stacks. 
 
 1.  We create a token using `define-fungible-token token-name` and Boom !!, you just created a token , it's that easy.
 ![Screenshot 2022-11-14 at 11.57.46 AM.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1668407270005/67ltrwUnf.png align="left")
@@ -117,6 +220,8 @@ Default functions for this type
 - `transfer` -  Transfer the token from an Address
 - `get-owner` -  Get the owner of a particular token
 
+Here too , we can implement the SIP-009 trait ,with `impl-trait 'SP2PABAF9FTAJYNFZH93XENAJ8FVY99RRM50D2JG9.nft-trait.nft-trait `, even this trait contract is deployed on Stacks chain.    
+
 
 1. To Create the token use `define-non-fungible-token tokenName` , and this will create nftTokens for you . 
 ![Screenshot 2022-11-14 at 3.00.36 PM.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1668418240572/HGPgQ-ik_.png align="left")
@@ -132,6 +237,7 @@ You will get the txId after confirming the tx . Mine is deployed on : https://ex
 
 
 So , We successfully completed NFT too . Great Job !!
+
 
 ## Bonus 
 
